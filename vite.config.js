@@ -5,6 +5,7 @@ import vuetify from 'vite-plugin-vuetify'
 
 // https://vite.dev/config/
 export default defineConfig({
+  base: '/vue3-awesome-form/',
   plugins: [
     vue(),
     vuetify({ autoImport: true }),
