@@ -60,15 +60,15 @@ export const validationRule = (
   }
 ): ((value: unknown) => boolean | string) => {
   return (value) => {
-    const parseResult = schema.safeParse(value);
+    const { success, error } = schema.safeParse(value);
     const isEmptyLike = value === '' || value === undefined || value === null;
-    if (parseResult.success) return true;
+    if (success) return true;
 
     if (errorMessage === undefined) {
       return false;
     }
 
-    for (const issue of parseResult.error.issues) {
+    for (const issue of error.issues) {
       switch (issue.code) {
         case 'too_small': // 最小値・最小長などの制約違反
           if (isEmptyLike && errorMessage.required !== undefined) {
