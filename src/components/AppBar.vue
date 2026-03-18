@@ -13,7 +13,7 @@ const locales: { value: Locales; label: string }[] = [
 
 <template>
   <VAppBar>
-    <VAppBarTitle>vue-vuetify-i18n-idea</VAppBarTitle>
+    <VAppBarTitle>Vue3 Awesome Form</VAppBarTitle>
     <template #append>
       <VBtn icon>
         <VIcon :icon="mdiTranslate" />

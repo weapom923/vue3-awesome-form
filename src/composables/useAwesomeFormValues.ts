@@ -78,12 +78,6 @@ const messageJa = Object.fromEntries(Object.keys(messageEn).map(k => [k, k])) as
 /**
  * AwesomeForm の各フィールドの入力値と Vuetify コンポーネント向け props を管理するコンポーザブル。
  *
- * 各フィールドは `[fieldName]Value`（`v-model` 用）と `[fieldName]Props`（`v-bind` 用）のペアで返される。
- * テンプレートでは以下のように使用する：
- * ```html
- * <VTextField v-model="textFieldValue" v-bind="textFieldProps" />
- * ```
- *
  * フォーム全体の入力値を Zod で検証し、バリデーション通過時は `validFormValue` に
  * 型安全な値を書き込む。バリデーション失敗時は `undefined` を書き込む。
  * `VForm` の `v-model`（Vuetify が管理するバリデーション状態）と Zod による検証は独立しているため、
@@ -163,6 +157,7 @@ export const useAwesomeFormValues = (
         notMultipleOf: ({ multipleOf }) => t('{multipleOf}の倍数を入力してください', { multipleOf }),
       }),
     ],
+    step: 1,
   });
 
   const rangeSliderProps = reactive({

@@ -59,7 +59,6 @@ const textFieldProps = reactive({
 
 - スキーマは言語・UI に依存しない純粋なバリデーションロジックのまま保たれる
 - `hint` は `computed` によってロケール変更に追従する。`rules` は静的に生成され、バリデーション実行時に `t()` を呼び出すためロケール変更は次回のバリデーショントリガー時（入力変更・フォーカスアウトなど）に反映される
-- `reactive` 内の `computed` は自動的にアンラップされるため、テンプレートから `v-bind="textFieldProps"` のまま利用できる
 - 独自のカスタムエラー（`z.superRefine` など）にも同じ仕組みで対応できる
 
 フォーム全体のバリデーション済み値は `ValidFormValue.schema.safeParse()` で検証し、
@@ -69,7 +68,7 @@ const textFieldProps = reactive({
 const validatedFormValue = computed(() =>
   ValidFormValue.schema.safeParse({ /* 各フィールドの値 */ }).data
 );
-watch(validatedFormValue, (value) => validFormValue.value = value, { immediate: true });
+watch(validatedFormValue, (value) => validFormValue.value = value);
 ```
 
 ---
