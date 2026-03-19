@@ -75,6 +75,7 @@ const {
       <VOtpInput v-model="otpInputValue" />
     </VInput>
 
+    <!-- 敢えて Zod のフォールバックメッセージを表示させています -->
     <VInput
       :validation-value="ratingValue"
       v-bind="ratingProps"
