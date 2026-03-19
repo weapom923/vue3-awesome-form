@@ -61,12 +61,12 @@ export const validationRule = (
 ): ((value: unknown) => boolean | string) => {
   return (value) => {
     const { success, error } = schema.safeParse(value);
-    const isEmptyLike = value === '' || value === undefined || value === null;
+
     if (success) return true;
 
-    if (errorMessage === undefined) {
-      return false;
-    }
+    if (errorMessage === undefined) return false;
+
+    const isEmptyLike = value === '' || value === undefined || value === null;
 
     for (const issue of error.issues) {
       switch (issue.code) {
